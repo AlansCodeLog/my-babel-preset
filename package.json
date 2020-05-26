@@ -1,0 +1,63 @@
+{
+	"name": "@alanscodelog/babel-preset",
+	"description": "My preferred babel config.",
+	"version": "0.0.0-semantically-released",
+	"main": "babel.config.js",
+	"scripts": {
+		"babel:run": "npx babel-node --extensions \".ts,.js\" --",
+		"babel:build": "npx babel --extensions \".ts,js\" src --out-dir dist --source-maps inline",
+		"lint:commits": "npx commitlint --from $(git rev-parse --abbrev-ref --symbolic-full-name @{u}) --to HEAD"
+	},
+	"husky": {
+		"hooks": {
+			"pre-push": "npm run lint:commits"
+		}
+	},
+	"peerDependencies": {
+		"@babel/cli": ">=7.8.4",
+		"@babel/core": ">=7.9.6",
+		"@babel/node": ">=7.8.7",
+		"@babel/plugin-proposal-class-properties": ">=7.8.3",
+		"@babel/preset-env": ">=7.9.6",
+		"@babel/preset-typescript": ">=7.9.0",
+		"babel-plugin-module-resolver": ">=4.0.0"
+	},
+	"devDependencies": {
+		"@babel/cli": ">=7.8.4",
+		"@babel/core": ">=7.9.6",
+		"@babel/node": ">=7.8.7",
+		"@babel/preset-env": ">=7.9.6",
+		"@babel/preset-typescript": ">=7.9.0",
+		"@babel/plugin-proposal-class-properties": ">=7.8.3",
+		"babel-plugin-module-resolver": ">=4.0.0",
+
+		"semantic-release": "^17.0.8",
+		"@semantic-release/changelog": "^5.0.1",
+		"@semantic-release/commit-analyzer": "^8.0.1",
+		"@semantic-release/github": "^7.0.7",
+		"@semantic-release/npm": "^7.0.5",
+		"@semantic-release/release-notes-generator": "^9.0.1",
+		"conventional-changelog-conventionalcommits": "^4.3.0",
+		"commitlint": "^8.3.5"
+	},
+	"author": "Alan <alanscodelog@gmail.com>",
+	"repository": "github:alanscodelog/my-babel-preset",
+	"license": "MIT",
+	"files": [
+		"babel.config.js"
+	],
+	"browserslist": "> 0.5%, last 2 versions, not dead, not < 0.25%, not IE > 0, maintained node versions",
+	"engines": {
+		"node": ">=10.0.0"
+	},
+	"@comments": {
+		"browserslist": "Just for local testing.",
+		"scripts": {
+			"babel:*": "Just for local testing.",
+			"lint:commits": "The --from gets the last pushed commit, i.e. origin/branchname, so that commitlint doesn't lint old commits. If it happens to fail because the branch was never pushed, commitlint just lints all the commits anyways."
+		}
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
