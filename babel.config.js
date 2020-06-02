@@ -22,7 +22,7 @@ module.exports = function (api) {
 				"root": [ "../" ],
 				"alias": {
 					"@": "./src",
-					"@utils": "./node_modules/@alanscodelog/utils/dist/*",
+					"@utils": "@alanscodelog/utils/dist",
 				}
 			} ],
 			"@babel/plugin-proposal-class-properties",
