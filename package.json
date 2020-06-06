@@ -6,7 +6,7 @@
 	"scripts": {
 		"babel:run": "npx babel-node --extensions \".ts,.js\" --",
 		"babel:build": "npx babel --extensions \".ts,js\" src --out-dir dist --source-maps inline",
-		"lint:commits": "npx commitlint --from $(git rev-parse --abbrev-ref --symbolic-full-name @{u}) --to HEAD"
+		"lint:commits": "npx commitlint --from $(git rev-list HEAD --not --remotes | tail -1)^ --to HEAD --verbose"
 	},
 	"husky": {
 		"hooks": {
@@ -38,6 +38,8 @@
 		"@semantic-release/npm": "^7.0.5",
 		"@semantic-release/release-notes-generator": "^9.0.1",
 		"conventional-changelog-conventionalcommits": "^4.3.0",
+		"@alanscodelog/semantic-release-config": "^1.0.1",
+		"@alanscodelog/commitlint-config": "^1.0.0",
 		"commitlint": "^8.3.5"
 	},
 	"author": "Alan <alanscodelog@gmail.com>",
@@ -46,6 +48,8 @@
 	"files": [
 		"babel.config.js"
 	],
+	"release": { "extends": [ "@alanscodelog/semantic-release-config" ] },
+	"commitlint": { "extends": [ "@alanscodelog" ] },
 	"browserslist": "> 0.5%, last 2 versions, not dead, not < 0.25%, not IE > 0, maintained node versions",
 	"engines": {
 		"node": ">=10.0.0"
@@ -54,7 +58,7 @@
 		"browserslist": "Just for local testing.",
 		"scripts": {
 			"babel:*": "Just for local testing.",
-			"lint:commits": "The --from gets the last pushed commit, i.e. origin/branchname, so that commitlint doesn't lint old commits. If it happens to fail because the branch was never pushed, commitlint just lints all the commits anyways."
+			"lint:commits": "Lints all unpushed commits in the active branch."
 		}
 	},
 	"publishConfig": {

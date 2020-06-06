@@ -1,3 +1,5 @@
+[![Release](https://github.com/alanscodelog/my-babel-preset/workflows/Release/badge.svg)](https://www.npmjs.com/package/@alanscodelog/babel-preset)
+
 My preferred babel config (as a preset).
 
 # Install
