@@ -5,7 +5,13 @@
 	"main": "babel.config.js",
 	"scripts": {
 		"babel:run": "npx babel-node --extensions \".ts,.js\" --",
-		"babel:build": "npx babel --extensions \".ts,js\" src --out-dir dist --source-maps inline",
+		"babel:run:dev": "npx onchange -i \"src/**/*.ts\" -- npx babel-node --extensions \".ts,.js\" --",
+
+		"build:babel": "npx babel --extensions \".ts,js\" src --out-dir dist --source-maps inline",
+		"build:watch": "npm run build:babel -- --watch",
+		"build:clean": "rm -rf dist && npm run build",
+		"build" : "echo ERROR: The build scripts are just for local testing. This package does not need to be built. && exit 1",
+
 		"lint:commits": "npx commitlint --from $(git rev-list HEAD --not --remotes | tail -1)^ --to HEAD --verbose"
 	},
 	"husky": {
@@ -51,16 +57,15 @@
 	"release": { "extends": [ "@alanscodelog/semantic-release-config" ] },
 	"commitlint": { "extends": [ "@alanscodelog" ] },
 	"browserslist": "> 0.5%, last 2 versions, not dead, not < 0.25%, not IE > 0, maintained node versions",
-	"engines": {
-		"node": ">=10.0.0"
-	},
+	"engines": { "node": ">=10.0.0" },
 	"@comments": {
 		"browserslist": "Just for local testing.",
 		"scripts": {
-			"babel:*": "Just for local testing.",
+			"build:*": "Just for local testing.",
 			"lint:commits": "Lints all unpushed commits in the active branch."
 		}
 	},
+	"TEMPLATE:4df5c37": "Ignore. Commit of the template this was created with / last updated to.",
 	"publishConfig": {
 		"access": "public"
 	}
