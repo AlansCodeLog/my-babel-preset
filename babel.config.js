@@ -22,6 +22,7 @@ module.exports = function (api) {
 				"root": [ "../" ],
 				"alias": {
 					"@": "./src",
+					"@tests": "./tests",
 					"@utils": "@alanscodelog/utils/dist",
 				}
 			} ],
