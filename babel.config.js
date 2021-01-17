@@ -27,6 +27,19 @@ module.exports = function (api) {
 			}],
 			"@babel/plugin-proposal-class-properties",
 			"@babel/plugin-proposal-export-namespace-from",
-		]
+		],
+		env: {
+			modern: {
+				presets: [
+					["@babel/env", {
+						modules: false,
+						targets: {
+							esmodules: true,
+							node: "14",
+						},
+					}],
+				],
+			},
+		},
 	}
 }
