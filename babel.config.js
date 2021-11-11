@@ -2,13 +2,6 @@ module.exports = function (api) {
 	api.cache(true)
 	return {
 		presets: [
-			["@babel/typescript", {
-				onlyRemoveTypeImports: true,
-				// parses js files as typescript
-				// not for actually writing typescript in js files (IDEs should complain anyways), but useful for allowing modern syntax in js files
-				allExtensions: true,
-				allowDeclareFields: true,
-			}],
 			["@babel/env", {
 				bugfixes: true,
 				useBuiltIns: "usage",
@@ -24,6 +17,15 @@ module.exports = function (api) {
 					"@tests": "./tests",
 					"@utils": "@alanscodelog/utils/dist",
 				},
+			}],
+			// must come before @babel/plugin-proposal-class-properties
+			// not using typescript preset because ran into this issue: https://github.com/facebook/create-react-app/issues/8918
+			["@babel/plugin-transform-typescript", {
+				onlyRemoveTypeImports: false,
+					// parses js files as typescript
+					// not for actually writing typescript in js files (IDEs should complain anyways), but useful for allowing modern syntax in js files
+					allExtensions: true,
+					"allowDeclareFields": true
 			}],
 			"@babel/plugin-proposal-class-properties",
 			"@babel/plugin-proposal-export-namespace-from",
