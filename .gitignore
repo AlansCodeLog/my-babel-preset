@@ -4,5 +4,4 @@
 node_modules
 
 # only for testing locally
-dist
-src
+test/*
