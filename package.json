@@ -10,14 +10,9 @@
 		"build:babel": "npx babel --extensions \".ts,js\" src --out-dir dist --source-maps inline",
 		"build:watch": "npm run build:babel -- --watch",
 		"build:clean": "rm -rf dist && npm run build",
-		"build" : "echo ERROR: The build scripts are just for local testing. This package does not need to be built. && exit 1",
-
-		"lint:commits": "npx commitlint --from $(git rev-list HEAD --not --remotes | tail -1)^ --to HEAD --verbose"
-	},
-	"husky": {
-		"hooks": {
-			"pre-push": "npm run lint:commits"
-		}
+		"build": "echo ERROR: The build scripts are just for local testing. This package does not need to be built. && exit 1",
+		"lint:commits": "npx commitlint --from $(git rev-list HEAD --not --remotes | tail -1)^ --to HEAD --verbose",
+		"prepare": "husky install"
 	},
 	"peerDependencies": {
 		"@babel/core": ">=7.9.6",
@@ -26,10 +21,10 @@
 		"@babel/plugin-proposal-class-properties": ">=7.8.3",
 		"@babel/plugin-proposal-export-namespace-from": ">=7.10.1",
 		"babel-plugin-module-resolver": ">=4.0.0",
-		"babel-plugin-add-import-extension":"1.6.0"
+		"babel-plugin-add-import-extension":">=1.6.0"
 	},
 	"peerDependenciesMeta": {
-		"babel-plugin-add-import-extension": {"optional": true}
+		"babel-plugin-add-import-extension": { "optional": true }
 	},
 	"devDependencies": {
 		"@babel/cli": ">=7.8.4",
@@ -40,17 +35,19 @@
 		"@babel/plugin-proposal-class-properties": ">=7.8.3",
 		"@babel/plugin-proposal-export-namespace-from": "^7.10.1",
 		"babel-plugin-module-resolver": ">=4.0.0",
+		"babel-plugin-add-import-extension":"^1.6.0",
 
-		"semantic-release": "^17.3.0",
-		"@semantic-release/changelog": "^5.0.1",
-		"@semantic-release/commit-analyzer": "^8.0.1",
-		"@semantic-release/github": "^7.2.0",
-		"@semantic-release/npm": "^7.0.9",
-		"@semantic-release/release-notes-generator": "^9.0.1",
-		"conventional-changelog-conventionalcommits": "^4.5.0",
-		"@alanscodelog/semantic-release-config": "^1.0.2",
-		"@alanscodelog/commitlint-config": "^1.0.2",
-		"commitlint": "^11.0.0"
+		"semantic-release": "^18.0.0",
+		"@semantic-release/changelog": "^6.0.1",
+		"@semantic-release/commit-analyzer": "^9.0.1",
+		"@semantic-release/github": "^8.0.2",
+		"@semantic-release/npm": "^8.0.3",
+		"@semantic-release/release-notes-generator": "^10.0.2",
+		"conventional-changelog-conventionalcommits": "^4.6.1",
+		"@alanscodelog/semantic-release-config": "^2.0.0",
+		"@alanscodelog/commitlint-config": "^2.0.0",
+		"commitlint": "^14.1.0",
+		"husky": "^7.0.4"
 	},
 	"author": "Alan <alanscodelog@gmail.com>",
 	"repository": "github:alanscodelog/my-babel-preset",
@@ -61,7 +58,7 @@
 	"release": { "extends": [ "@alanscodelog/semantic-release-config" ] },
 	"commitlint": { "extends": [ "@alanscodelog" ] },
 	"browserslist": "> 0.5%, last 2 versions, not dead, not < 0.25%, not IE > 0, maintained node versions",
-	"engines": { "node": ">=10.0.0" },
+	"engines": { "node": ">=14.0.0" },
 	"@comments": {
 		"browserslist": "Just for local testing.",
 		"scripts": {
