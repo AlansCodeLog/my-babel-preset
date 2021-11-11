@@ -15,6 +15,7 @@ yarn add -D @alanscodelog/babel-preset \\
 @babel/plugin-proposal-class-properties \\
 @babel/plugin-proposal-export-namespace-from \\
 babel-plugin-module-resolver \\
+babel-plugin-add-import-extension \\ #optional, see ES Modules below
 ```
 
 # Usage
@@ -28,4 +29,4 @@ Set babel config and `browserslist` (targets for `@babel/preset-env` are unset) 
 
 ## ES Modules
 
-Can optionally output es modules by adding `--env-name modern` to the end of the babel command.
+Can optionally output es modules by adding `--env-name modern` to the end of the babel command. Requires `babel-plugin-add-import-extension` if we don't want to have to be writing extensions.

@@ -41,6 +41,9 @@ module.exports = function (api) {
 						},
 					}],
 				],
+				plugins: [
+					["babel-plugin-add-import-extension"]
+				]
 			},
 		},
 	}
